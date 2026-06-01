@@ -25,11 +25,15 @@ export default function About() {
       </ScrollReveal>
 
       <ScrollReveal className="mx-auto mt-10 flex max-w-xl flex-col items-center gap-5 rounded-card border border-border bg-bg-card p-6 text-center sm:flex-row sm:text-left">
+        {/* unoptimized → serves the live file from the main site, so a photo
+            update there follows through without an optimizer cache holding the
+            old copy. */}
         <Image
           src={ORG.founder.image}
           alt={`${ORG.founder.name}, ${ORG.founder.jobTitle} of Antek Automation`}
           width={96}
           height={96}
+          unoptimized
           className="h-24 w-24 shrink-0 rounded-full border border-border object-cover"
         />
         <div>
