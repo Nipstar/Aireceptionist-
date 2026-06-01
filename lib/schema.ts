@@ -50,9 +50,35 @@ export const SERVICE_SCHEMA = {
   },
   offers: {
     "@type": "Offer",
-    price: "97",
     priceCurrency: "GBP",
+    url: SITE.url,
+    availability: "https://schema.org/InStock",
     description: "AI voice agent receptionist from £97/month plus £249 setup.",
+    priceSpecification: {
+      "@type": "CompoundPriceSpecification",
+      priceCurrency: "GBP",
+      // Recurring monthly fee + one-time setup, modelled as separate components.
+      priceComponent: [
+        {
+          "@type": "UnitPriceSpecification",
+          name: "Monthly subscription",
+          price: "97",
+          priceCurrency: "GBP",
+          referenceQuantity: {
+            "@type": "QuantitativeValue",
+            value: "1",
+            unitCode: "MON",
+          },
+        },
+        {
+          "@type": "UnitPriceSpecification",
+          name: "One-time setup",
+          price: "249",
+          priceCurrency: "GBP",
+          priceType: "https://schema.org/Installation",
+        },
+      ],
+    },
   },
 };
 
