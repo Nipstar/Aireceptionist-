@@ -5,24 +5,49 @@ import { useEffect } from "react";
 import { INTEGRATIONS } from "@/lib/site";
 import { track } from "@/lib/tracking";
 
+const LAUNCHER_SELECTOR =
+  "button, [role='button'], [class*='fab'], [class*='launch'], [class*='bubble'], [class*='toggle']";
+
+// Searches the page (incl. any custom-element shadow roots, since the Retell
+// widget renders inside one) for its launcher button and clicks it.
+function tryOpenRetell(): boolean {
+  if (typeof document === "undefined") return false;
+  const hosts = Array.from(document.querySelectorAll<HTMLElement>("*")).filter(
+    (el) =>
+      el.tagName.toLowerCase().includes("retell") ||
+      Boolean((el as any).shadowRoot)
+  );
+  for (const host of hosts) {
+    const root = ((host as any).shadowRoot as ShadowRoot | undefined) ?? host;
+    const btn = root.querySelector<HTMLElement>(LAUNCHER_SELECTOR);
+    if (btn) {
+      btn.click();
+      return true;
+    }
+  }
+  return false;
+}
+
 // Loads the Retell chat widget and exposes window.openAntekChat().
 export default function RetellWidget() {
   useEffect(() => {
     window.openAntekChat = () => {
       track("chat_start");
-      // The widget renders inside a custom element with a shadow root.
-      const host = document.querySelector(
-        "retell-widget, [data-retell-widget], #retell-widget"
-      ) as HTMLElement | null;
-      const root = (host as any)?.shadowRoot as ShadowRoot | undefined;
-      const btn =
-        root?.querySelector<HTMLElement>(
-          "button, [role='button'], .fab, .launcher"
-        ) ||
-        document.querySelector<HTMLElement>(
-          ".retell-fab, [data-retell-fab]"
-        );
-      btn?.click();
+      if (tryOpenRetell()) return;
+      // The widget may still be mounting — retry briefly, then fall back to the
+      // contact form so the button never silently does nothing.
+      let tries = 0;
+      const timer = setInterval(() => {
+        tries += 1;
+        if (tryOpenRetell() || tries >= 10) {
+          clearInterval(timer);
+          if (tries >= 10) {
+            document
+              .getElementById("contact")
+              ?.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+      }, 250);
     };
     return () => {
       delete window.openAntekChat;

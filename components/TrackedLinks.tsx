@@ -47,7 +47,15 @@ export function EmailLink({
   );
 }
 
-// Opens the booking popup modal via the globally-exposed handler.
+// Routes a "book a consult" CTA to the contact section (inline Cal embed +
+// forms) further down the page, instead of a popup.
+export function scrollToContact() {
+  if (typeof document === "undefined") return;
+  document
+    .getElementById("contact")
+    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 export function BookCTA({
   source,
   children,
@@ -62,7 +70,8 @@ export function BookCTA({
     <button
       type="button"
       className={className}
-      onClick={() => window.openBookingPopup?.(source)}
+      data-cta-source={source}
+      onClick={scrollToContact}
       {...(rest as any)}
     >
       {children}

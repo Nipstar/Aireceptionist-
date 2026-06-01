@@ -13,7 +13,6 @@ import About from "@/components/sections/About";
 import Footer from "@/components/sections/Footer";
 
 import ConsentBanner from "@/components/ConsentBanner";
-import BookingPopup from "@/components/BookingPopup";
 import RetellWidget from "@/components/RetellWidget";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ScrollDepth from "@/components/ScrollDepth";
@@ -39,7 +38,6 @@ export default function Home() {
 
       {/* Global client integrations */}
       <ConsentBanner />
-      <BookingPopup />
       <RetellWidget />
       <StickyMobileCTA />
       <ScrollDepth />

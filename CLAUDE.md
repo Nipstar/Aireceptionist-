@@ -34,12 +34,11 @@ form (webhook) → call a live demo number (`tel:`) → open the Retell chat wid
 ├── components/
 │   ├── sections/         # one file per page section (Nav, Hero, FAQ, Contact, …)
 │   ├── ContactForms.tsx  # QuickCallbackForm + FullContactForm (both POST to webhook)
-│   ├── CalInline.tsx     # lazy inline Cal.com embed
-│   ├── BookingPopup.tsx  # modal Cal.com embed; exposes window.openBookingPopup()
+│   ├── CalInline.tsx     # lazy inline Cal.com embed (the booking destination)
 │   ├── RetellWidget.tsx  # loads Retell widget; exposes window.openAntekChat()
 │   ├── ConsentBanner.tsx # cookie banner → grants GA consent + loads Clarity
 │   ├── StickyMobileCTA.tsx, ScrollDepth.tsx  # mobile CTA bar + scroll_depth events
-│   ├── TrackedLinks.tsx  # PhoneLink / EmailLink / BookCTA (fire GA events)
+│   ├── TrackedLinks.tsx  # PhoneLink / EmailLink (fire GA events) + BookCTA (scrolls to #contact)
 │   ├── JsonLd.tsx, ScrollReveal.tsx, CountUp.tsx, Waveform.tsx
 ├── lib/
 │   ├── site.ts           # SINGLE SOURCE OF TRUTH: keys, links, demo numbers, FAQs, industries
@@ -102,8 +101,9 @@ integrations live directly in `components/`.
   `window.__loadClarity`. Never load Clarity or grant consent elsewhere.
 - Fire GA events through `track()` in `lib/tracking.ts` using the **network-wide
   event names** (`form_submit`, `phone_click`, `email_click`, `chat_start`,
-  `cal_booking`, `scroll_depth`, `sticky_cta_click`, `booking_popup_shown`,
-  `booking_popup_dismissed`). Keep names consistent across the satellite network.
+  `cal_booking`, `scroll_depth`, `sticky_cta_click`). Keep names consistent
+  across the satellite network. (`booking_popup_*` events were retired when the
+  Cal popup was replaced by scrolling consult CTAs to the `#contact` section.)
 - Both forms POST JSON to the n8n webhook in `lib/site.ts` via `submitLead()`,
   which attaches source/UTM/GA-id/engagement metadata. Both have a **honeypot**
   (`company_website`) that silently aborts submission when filled.

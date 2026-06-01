@@ -9,7 +9,6 @@ declare global {
     clarity?: (...args: unknown[]) => void;
     __loadClarity?: () => void;
     openAntekChat?: () => void;
-    openBookingPopup?: (source?: string) => void;
   }
 }
 

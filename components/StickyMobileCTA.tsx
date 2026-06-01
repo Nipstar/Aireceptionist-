@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { SITE } from "@/lib/site";
 import { track } from "@/lib/tracking";
+import { scrollToContact } from "@/components/TrackedLinks";
 
 // Mobile-only bar that appears after ~35% scroll, hidden when #contact is visible.
 export default function StickyMobileCTA() {
@@ -59,7 +60,7 @@ export default function StickyMobileCTA() {
         type="button"
         onClick={() => {
           track("sticky_cta_click", { action: "book" });
-          window.openBookingPopup?.("sticky-mobile");
+          scrollToContact();
         }}
         className="btn-primary flex-1 px-4 py-3 text-sm"
       >
