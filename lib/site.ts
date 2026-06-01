@@ -26,6 +26,13 @@ export const ORG = {
   duns: "235593033",
   ico: "ZC133436",
   icoUrl: "https://ico.org.uk/ESDWebPages/Entry/ZC133436",
+  founder: {
+    name: "Andy Norman",
+    jobTitle: "Founder",
+    about: "https://www.antekautomation.com/about",
+    linkedin: "https://www.linkedin.com/in/andy-norman-ab78443a1",
+    aboutMe: "https://about.me/andynorman",
+  },
 } as const;
 
 // Integration keys (public, client-side embeddable).

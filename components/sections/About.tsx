@@ -1,5 +1,5 @@
 import ScrollReveal from "@/components/ScrollReveal";
-import { PARENT } from "@/lib/site";
+import { ORG, PARENT } from "@/lib/site";
 
 export default function About() {
   return (
@@ -20,6 +20,27 @@ export default function About() {
           every call. We design, build and manage AI voice agents and chatbots
           that qualify leads and book appointments 24/7 — so a missed call never
           means a missed customer.
+        </p>
+        <p className="mt-4 text-text-secondary">
+          Founded by{" "}
+          <a
+            href={ORG.founder.about}
+            target="_blank"
+            rel="noopener"
+            className="text-accent-secondary underline-offset-2 hover:underline"
+          >
+            {ORG.founder.name}
+          </a>
+          , {ORG.founder.jobTitle} of Antek Automation. Connect on{" "}
+          <a
+            href={ORG.founder.linkedin}
+            target="_blank"
+            rel="noopener"
+            className="text-accent-secondary underline-offset-2 hover:underline"
+          >
+            LinkedIn
+          </a>
+          .
         </p>
       </ScrollReveal>
     </section>

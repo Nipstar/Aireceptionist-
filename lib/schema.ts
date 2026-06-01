@@ -32,6 +32,13 @@ export const ORGANIZATION_SCHEMA = {
       url: ORG.icoUrl,
     },
   ],
+  founder: {
+    "@type": "Person",
+    name: ORG.founder.name,
+    jobTitle: ORG.founder.jobTitle,
+    url: ORG.founder.about,
+    sameAs: [ORG.founder.linkedin, ORG.founder.aboutMe],
+  },
   sameAs: SAME_AS,
 };
 
