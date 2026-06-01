@@ -28,9 +28,11 @@ form (webhook) → call a live demo number (`tel:`) → open the Retell chat wid
 ├── app/
 │   ├── layout.tsx        # <head>: metadata, fonts, JSON-LD, GA4 consent mode, Clarity loader
 │   ├── page.tsx          # composes all sections + mounts global client integrations
-│   ├── globals.css       # CSS variables (RGB channels), Tailwind layers, animations
+│   ├── privacy/page.tsx  # UK-GDPR privacy policy (static route, in sitemap)
+│   ├── terms/page.tsx    # terms of service (static route, in sitemap)
+│   ├── globals.css       # CSS variables (RGB channels), Tailwind layers, .prose-legal
 │   ├── robots.ts         # generates /robots.txt (allows GPTBot/ClaudeBot/Perplexity/Google-Extended)
-│   └── sitemap.ts        # generates /sitemap.xml
+│   └── sitemap.ts        # generates /sitemap.xml (home + /privacy + /terms)
 ├── components/
 │   ├── sections/         # one file per page section (Nav, Hero, FAQ, Contact, …)
 │   ├── ContactForms.tsx  # QuickCallbackForm + FullContactForm (both POST to webhook)
@@ -39,6 +41,7 @@ form (webhook) → call a live demo number (`tel:`) → open the Retell chat wid
 │   ├── ConsentBanner.tsx # cookie banner → grants GA consent + loads Clarity
 │   ├── StickyMobileCTA.tsx, ScrollDepth.tsx  # mobile CTA bar + scroll_depth events
 │   ├── TrackedLinks.tsx  # PhoneLink / EmailLink (fire GA events) + BookCTA (scrolls to #contact)
+│   ├── LegalShell.tsx    # shared wrapper (Nav + Footer + prose) for /privacy and /terms
 │   ├── JsonLd.tsx, ScrollReveal.tsx, CountUp.tsx, Waveform.tsx
 ├── lib/
 │   ├── site.ts           # SINGLE SOURCE OF TRUTH: keys, links, demo numbers, FAQs, industries

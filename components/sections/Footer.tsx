@@ -13,12 +13,17 @@ const SAME_AS = [
 ];
 
 const NAV = [
-  { href: "#services", label: "Services" },
-  { href: "#demo", label: "Demo" },
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#industries", label: "Industries" },
-  { href: "#faq", label: "FAQ" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#services", label: "Services" },
+  { href: "/#demo", label: "Demo" },
+  { href: "/#how-it-works", label: "How It Works" },
+  { href: "/#industries", label: "Industries" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#contact", label: "Contact" },
+];
+
+const LEGAL = [
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms of Service" },
 ];
 
 export default function Footer() {
@@ -81,14 +86,25 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-sm text-text-muted sm:flex-row">
-          <p>
-            Certified Retell AI Partner · Powered by{" "}
-            <a href={PARENT.home} className="hover:text-accent-secondary">
-              Antek Automation
-            </a>
-          </p>
-          <p>© 2025 AI Voice Agent Receptionist</p>
+        <div className="mt-12 flex flex-col gap-4 border-t border-border pt-6 text-sm text-text-muted">
+          <ul className="flex flex-wrap gap-x-5 gap-y-2">
+            {LEGAL.map((l) => (
+              <li key={l.href}>
+                <a href={l.href} className="hover:text-accent-secondary">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
+            <p>
+              Certified Retell AI Partner · Powered by{" "}
+              <a href={PARENT.home} className="hover:text-accent-secondary">
+                Antek Automation
+              </a>
+            </p>
+            <p>© 2025 AI Voice Agent Receptionist</p>
+          </div>
         </div>
       </div>
     </footer>

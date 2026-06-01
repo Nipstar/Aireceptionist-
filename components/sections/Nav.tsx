@@ -4,16 +4,16 @@ import { useState } from "react";
 import { BookCTA } from "@/components/TrackedLinks";
 
 const LINKS = [
-  { href: "#services", label: "Services" },
-  { href: "#demo", label: "Demo" },
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#industries", label: "Industries" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/#services", label: "Services" },
+  { href: "/#demo", label: "Demo" },
+  { href: "/#how-it-works", label: "How It Works" },
+  { href: "/#industries", label: "Industries" },
+  { href: "/#faq", label: "FAQ" },
 ];
 
 function Logo() {
   return (
-    <a href="#top" className="flex items-center gap-2.5">
+    <a href="/" className="flex items-center gap-2.5">
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden>
         <rect width="28" height="28" rx="8" fill="#1a1f2e" stroke="#1e293b" />
         <g stroke="#06b6d4" strokeWidth="2" strokeLinecap="round">

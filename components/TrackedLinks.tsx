@@ -51,9 +51,13 @@ export function EmailLink({
 // forms) further down the page, instead of a popup.
 export function scrollToContact() {
   if (typeof document === "undefined") return;
-  document
-    .getElementById("contact")
-    ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const el = document.getElementById("contact");
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  } else {
+    // On a sub-page (e.g. /privacy) there's no #contact — go to the homepage's.
+    window.location.href = "/#contact";
+  }
 }
 
 export function BookCTA({

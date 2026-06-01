@@ -72,6 +72,26 @@ h1, h2, h3, h4, .font-display {
   .eyebrow {
     @apply text-sm font-semibold uppercase tracking-[0.18em] text-accent-secondary;
   }
+
+  /* Long-form legal/content pages */
+  .prose-legal h2 {
+    @apply mt-10 font-display text-2xl font-bold text-text-primary;
+  }
+  .prose-legal h3 {
+    @apply mt-6 font-display text-lg font-bold text-text-primary;
+  }
+  .prose-legal p {
+    @apply mt-4 leading-relaxed text-text-secondary;
+  }
+  .prose-legal ul {
+    @apply mt-4 list-disc space-y-2 pl-6 text-text-secondary;
+  }
+  .prose-legal a {
+    @apply text-accent-secondary underline-offset-2 hover:underline;
+  }
+  .prose-legal strong {
+    @apply text-text-primary;
+  }
 }
 
 /* Scroll-reveal */
