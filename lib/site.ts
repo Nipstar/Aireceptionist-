@@ -11,21 +11,29 @@ export const SITE = {
 } as const;
 
 // Integration keys (public, client-side embeddable).
+// Each reads a NEXT_PUBLIC_* env var, falling back to the current value so the
+// build works with no .env file. NOTE: references must be literal so Next can
+// inline them into the client bundle — do not refactor into a lookup helper.
 export const INTEGRATIONS = {
-  ga4Id: "G-C7MMT455TB",
-  clarityId: "ww6ws9q0if",
+  ga4Id: process.env.NEXT_PUBLIC_GA4_ID ?? "G-C7MMT455TB",
+  clarityId: process.env.NEXT_PUBLIC_CLARITY_ID ?? "ww6ws9q0if",
   webhook:
+    process.env.NEXT_PUBLIC_LEAD_WEBHOOK_URL ??
     "https://antekauto.app.n8n.cloud/webhook/29e3a09b-5b23-489b-a800-a07262afb4cb",
   cal: {
-    link: "antek-automation/30min",
+    link: process.env.NEXT_PUBLIC_CAL_LINK ?? "antek-automation/30min",
     inlineNamespace: "30min",
     popupNamespace: "popup-30min",
     origin: "https://app.cal.com",
   },
   retell: {
     scriptSrc: "https://dashboard.retellai.com/retell-widget-v2.js",
-    publicKey: "public_key_b96440ad931cbd5326e4d",
-    agentId: "agent_1c30d12544e2aedfc07ac8be1c",
+    publicKey:
+      process.env.NEXT_PUBLIC_RETELL_PUBLIC_KEY ??
+      "public_key_b96440ad931cbd5326e4d",
+    agentId:
+      process.env.NEXT_PUBLIC_RETELL_AGENT_ID ??
+      "agent_1c30d12544e2aedfc07ac8be1c",
   },
 } as const;
 
