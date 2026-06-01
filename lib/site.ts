@@ -6,7 +6,8 @@
 // all agree on ONE host. Set NEXT_PUBLIC_SITE_URL to whichever host actually
 // serves the site (e.g. the www subdomain) and set up a redirect from the other.
 const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://aivoiceagentreceptionist.co.uk"
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "https://www.aivoiceagentreceptionist.co.uk"
 ).replace(/\/+$/, "");
 
 export const SITE = {

@@ -109,8 +109,11 @@ integrations live directly in `components/`.
   (`company_website`) that silently aborts submission when filled.
 
 ### SEO (the point of the satellite)
-- Canonical is **self-referencing** to `https://aivoiceagentreceptionist.co.uk/`.
-  Never canonical to the parent — the satellite must rank on its own merit.
+- Canonical is **self-referencing** to the production host
+  (`https://www.aivoiceagentreceptionist.co.uk/` — www is production; apex
+  redirects to it). The base URL is driven by `NEXT_PUBLIC_SITE_URL` (default in
+  `lib/site.ts`), which feeds canonical, OG, sitemap `<loc>` and robots. Never
+  canonical to the parent — the satellite must rank on its own merit.
 - Three JSON-LD blocks (Organization/ProfessionalService, Service, FAQPage) ship
   in `<head>` via `JsonLd`. The FAQPage must match the visible FAQ (it does,
   because both read `FAQS`).
