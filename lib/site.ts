@@ -19,6 +19,15 @@ export const SITE = {
   email: "hello@antekautomation.com",
 } as const;
 
+// Operating entity / registration identifiers — single source for the
+// Organization JSON-LD (lib/schema.ts) and the privacy policy, so they agree.
+export const ORG = {
+  legalName: "Antek Automation",
+  duns: "235593033",
+  ico: "ZC133436",
+  icoUrl: "https://ico.org.uk/ESDWebPages/Entry/ZC133436",
+} as const;
+
 // Integration keys (public, client-side embeddable).
 // Each reads a NEXT_PUBLIC_* env var, falling back to the current value so the
 // build works with no .env file. NOTE: references must be literal so Next can

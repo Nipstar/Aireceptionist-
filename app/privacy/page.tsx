@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import LegalShell from "@/components/LegalShell";
-import { PARENT, SITE } from "@/lib/site";
+import { ORG, PARENT, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | AI Voice Agent Receptionist",
@@ -23,19 +23,15 @@ export default function PrivacyPage() {
 
       <h2>Who we are</h2>
       <p>
-        This website is operated by <strong>Antek Automation</strong>, which
+        This website is operated by <strong>{ORG.legalName}</strong>, which
         trades the service &ldquo;AI Voice Agent Receptionist&rdquo; and acts as
         the data controller for personal data collected through this site. We are
         registered with the UK Information Commissioner&rsquo;s Office (ICO),
         registration reference{" "}
-        <a
-          href="https://ico.org.uk/ESDWebPages/Entry/ZC133436"
-          target="_blank"
-          rel="noopener"
-        >
-          ZC133436
+        <a href={ORG.icoUrl} target="_blank" rel="noopener">
+          {ORG.ico}
         </a>
-        .
+        . Our D&amp;B D-U-N-S number is <strong>{ORG.duns}</strong>.
       </p>
       <p>
         Contact: <a href={SITE.mainPhoneHref}>{SITE.mainPhone}</a> ·{" "}

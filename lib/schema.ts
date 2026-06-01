@@ -1,4 +1,4 @@
-import { FAQS, PARENT, SITE } from "./site";
+import { FAQS, ORG, PARENT, SITE } from "./site";
 
 const SAME_AS = [
   "https://www.antekautomation.com",
@@ -24,12 +24,12 @@ export const ORGANIZATION_SCHEMA = {
   email: "hello@antekautomation.com",
   areaServed: "United Kingdom",
   identifier: [
-    { "@type": "PropertyValue", propertyID: "DUNS", value: "235593033" },
+    { "@type": "PropertyValue", propertyID: "DUNS", value: ORG.duns },
     {
       "@type": "PropertyValue",
       propertyID: "ICO",
-      value: "ZC133436",
-      url: "https://ico.org.uk/ESDWebPages/Entry/ZC133436",
+      value: ORG.ico,
+      url: ORG.icoUrl,
     },
   ],
   sameAs: SAME_AS,
