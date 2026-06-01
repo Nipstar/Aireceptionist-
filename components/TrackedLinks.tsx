@@ -1,0 +1,71 @@
+"use client";
+
+import { track } from "@/lib/tracking";
+import type { AnchorHTMLAttributes, ReactNode } from "react";
+
+// tel: link that fires a phone_click GA event.
+export function PhoneLink({
+  href,
+  children,
+  label,
+  className,
+}: {
+  href: string;
+  children: ReactNode;
+  label?: string;
+  className?: string;
+}) {
+  return (
+    <a
+      href={href}
+      className={className}
+      onClick={() => track("phone_click", { number: href, label })}
+    >
+      {children}
+    </a>
+  );
+}
+
+// mailto: link that fires an email_click GA event.
+export function EmailLink({
+  email,
+  children,
+  className,
+}: {
+  email: string;
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <a
+      href={`mailto:${email}`}
+      className={className}
+      onClick={() => track("email_click", { email })}
+    >
+      {children}
+    </a>
+  );
+}
+
+// Opens the booking popup modal via the globally-exposed handler.
+export function BookCTA({
+  source,
+  children,
+  className = "btn-primary",
+  ...rest
+}: {
+  source: string;
+  children: ReactNode;
+  className?: string;
+} & AnchorHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button
+      type="button"
+      className={className}
+      onClick={() => window.openBookingPopup?.(source)}
+      {...(rest as any)}
+    >
+      {children}
+    </button>
+  );
+}
