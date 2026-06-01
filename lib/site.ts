@@ -1,10 +1,18 @@
 // Central source of truth for cross-network constants, links and identity.
 // Keep these in sync with the parent Antek Automation network.
 
+// Canonical base URL for the whole site. Drives metadataBase, the canonical
+// tag, Open Graph URLs, the sitemap <loc> and robots.txt Host/Sitemap — so they
+// all agree on ONE host. Set NEXT_PUBLIC_SITE_URL to whichever host actually
+// serves the site (e.g. the www subdomain) and set up a redirect from the other.
+const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://aivoiceagentreceptionist.co.uk"
+).replace(/\/+$/, "");
+
 export const SITE = {
   name: "AI Voice Agent Receptionist",
-  domain: "aivoiceagentreceptionist.co.uk",
-  url: "https://aivoiceagentreceptionist.co.uk",
+  url: SITE_URL,
+  domain: SITE_URL.replace(/^https?:\/\//, ""),
   mainPhone: "0333 038 9960",
   mainPhoneHref: "tel:03330389960",
   email: "hello@antekautomation.com",
