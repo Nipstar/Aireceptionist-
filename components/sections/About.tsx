@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ScrollReveal from "@/components/ScrollReveal";
 import { ORG, PARENT } from "@/lib/site";
 
@@ -21,27 +22,40 @@ export default function About() {
           that qualify leads and book appointments 24/7 — so a missed call never
           means a missed customer.
         </p>
-        <p className="mt-4 text-text-secondary">
-          Founded by{" "}
-          <a
-            href={ORG.founder.about}
-            target="_blank"
-            rel="noopener"
-            className="text-accent-secondary underline-offset-2 hover:underline"
-          >
-            {ORG.founder.name}
-          </a>
-          , {ORG.founder.jobTitle} of Antek Automation. Connect on{" "}
+      </ScrollReveal>
+
+      <ScrollReveal className="mx-auto mt-10 flex max-w-xl flex-col items-center gap-5 rounded-card border border-border bg-bg-card p-6 text-center sm:flex-row sm:text-left">
+        <Image
+          src={ORG.founder.image}
+          alt={`${ORG.founder.name}, ${ORG.founder.jobTitle} of Antek Automation`}
+          width={96}
+          height={96}
+          className="h-24 w-24 shrink-0 rounded-full border border-border object-cover"
+        />
+        <div>
+          <p className="font-display font-bold">
+            <a
+              href={ORG.founder.about}
+              target="_blank"
+              rel="noopener"
+              className="hover:text-accent-secondary"
+            >
+              {ORG.founder.name}
+            </a>
+            <span className="text-text-muted"> · {ORG.founder.jobTitle}</span>
+          </p>
+          <p className="mt-2 text-sm text-text-secondary">
+            {ORG.founder.description}
+          </p>
           <a
             href={ORG.founder.linkedin}
             target="_blank"
             rel="noopener"
-            className="text-accent-secondary underline-offset-2 hover:underline"
+            className="mt-3 inline-block text-sm font-semibold text-accent-secondary underline-offset-2 hover:underline"
           >
-            LinkedIn
+            Connect on LinkedIn →
           </a>
-          .
-        </p>
+        </div>
       </ScrollReveal>
     </section>
   );

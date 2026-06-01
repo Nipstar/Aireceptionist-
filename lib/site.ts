@@ -32,6 +32,16 @@ export const ORG = {
     about: "https://www.antekautomation.com/about",
     linkedin: "https://www.linkedin.com/in/andy-norman-ab78443a1",
     aboutMe: "https://about.me/andynorman",
+    image: "https://www.antekautomation.com/andy-norman.webp",
+    description:
+      "Founder of Antek Automation with 30+ years in technology. Background in managed print services as technician, service manager and print management solutions specialist. Now building AI voice agents, chatbots and workflow automation for UK businesses.",
+    knowsAbout: [
+      "AI automation",
+      "AI chatbots",
+      "Voice AI",
+      "Workflow automation",
+      "Conversational AI",
+    ],
   },
 } as const;
 

@@ -37,8 +37,12 @@ export const ORGANIZATION_SCHEMA = {
     name: ORG.founder.name,
     jobTitle: ORG.founder.jobTitle,
     url: ORG.founder.about,
+    image: ORG.founder.image,
+    description: ORG.founder.description,
+    knowsAbout: ORG.founder.knowsAbout,
     sameAs: [ORG.founder.linkedin, ORG.founder.aboutMe],
   },
+  foundingDate: "2025",
   sameAs: SAME_AS,
 };
 

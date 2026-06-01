@@ -2,6 +2,11 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "www.antekautomation.com" },
+    ],
+  },
 };
 
 export default nextConfig;
